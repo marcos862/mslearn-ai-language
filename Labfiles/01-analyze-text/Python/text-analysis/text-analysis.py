@@ -53,7 +53,7 @@ def main():
             if len(entities) > 0:
                 print("\nLinks")
                 for linked_entity in entities:
-                    print('\t{} ({})'.format(linked_entity.name, linked_entity.url))-
+                    print('\t{} ({})'.format(linked_entity.name, linked_entity.url))
 
     except Exception:
         print(format_exc())
