@@ -41,7 +41,11 @@ def main():
                     print('\t{}'.format(phrase))
 
             # Get entities
-
+            entities = ai_client.recognize_entities(documents=[text])[0].entities
+            if len(entities) > 0:
+                print("\nEntities")
+                for entity in entities:
+                    print('\t{} ({})'.format(entity.text, entity.category))
 
             # Get linked entities
 
