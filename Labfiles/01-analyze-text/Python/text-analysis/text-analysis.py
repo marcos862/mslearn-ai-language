@@ -26,7 +26,8 @@ def main():
             print('\n' + text)
 
             # Get language
-
+            detectedLanguage = ai_client.detect_language(documents=[text])[0]
+            print('\nLanguage: {}'.format(detectedLanguage.primary_language.name))
 
             # Get sentiment
 
