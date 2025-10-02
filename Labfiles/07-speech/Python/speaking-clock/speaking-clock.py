@@ -1,9 +1,13 @@
-from dotenv import load_dotenv
-from datetime import datetime
 import os
 
-# Import namespaces
+from dotenv import load_dotenv
+from datetime import datetime
+from traceback import format_exc
 
+
+# Import namespaces
+from azure.core.credentials import AzureKeyCredential
+import azure.cognitiveservices.speech as speech_sdk
 
 def main():
 
@@ -19,15 +23,16 @@ def main():
         speech_region = os.getenv('REGION')
 
         # Configure speech service
-        
+        speech_config = speech_sdk.SpeechConfig(speech_key, speech_region)
+        print("Ready to use speech service in: ", speech_config.region)
 
         # Get spoken input
         command = TranscribeCommand()
         if command.lower() == 'what time is it?':
             TellTime()
 
-    except Exception as ex:
-        print(ex)
+    except Exception:
+        print(format_exc())
 
 def TranscribeCommand():
     command = ''
