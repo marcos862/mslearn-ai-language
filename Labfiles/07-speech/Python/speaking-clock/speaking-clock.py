@@ -44,10 +44,10 @@ def TranscribeCommand():
     speech_recognizer = speech_sdk.SpeechRecognizer(speech_config, audio_config)
 
     # Process speech input
-    print("Listining...")
+    print("Listening...")
     speech = speech_recognizer.recognize_once_async().get()
     if speech.reason == speech_sdk.ResultReason.RecognizedSpeech:
-        command = speech.text()
+        command = speech.text
         print(command)
     else:
         print(speech.reason)
