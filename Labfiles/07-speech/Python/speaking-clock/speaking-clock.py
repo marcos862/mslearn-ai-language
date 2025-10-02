@@ -38,10 +38,23 @@ def TranscribeCommand():
     command = ''
 
     # Configure speech recognition
-
+    current_dir = os.getcwd()
+    audiofile = os.path.join(current_dir, "time.wav")
+    audio_config = speech_sdk.AudioConfig(filename=audiofile)
+    speech_recognizer = speech_sdk.SpeechRecognizer(speech_config, audio_config)
 
     # Process speech input
-
+    print("Listining...")
+    speech = speech_recognizer.recognize_once_async().get()
+    if speech.reason == speech_sdk.ResultReason.RecognizedSpeech:
+        command = speech.text()
+        print(command)
+    else:
+        print(speech.reason)
+        if speech.reason == speech_sdk.ResultReason.Canceled:
+            cancellation = speech.cancellation_details
+            print(cancellation.reason)
+            print(cancellation.error_details)
 
     # Return the command
     return command
