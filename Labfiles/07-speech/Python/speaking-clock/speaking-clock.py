@@ -64,12 +64,18 @@ def TellTime():
     now = datetime.now()
     response_text = 'The time is {}:{:02d}'.format(now.hour,now.minute)
 
-
     # Configure speech synthesis
-    
+    output_file = "output.wav"
+    speech_config.speech_synthesis_voice_name = "en-GB-RyanNeural"
+    audio_config = speech_sdk.audio.AudioConfig(filename=output_file)
+    speech_synthesizer = speech_sdk.SpeechSynthesizer(speech_config, audio_config)
 
     # Synthesize spoken output
-
+    speak = speech_synthesizer.speak_text_async(response_text).get()
+    if speak.reason != speech_sdk.ResultReason.SynthesizingAudioCompleted:
+        print(speak.reason)
+    else:
+        print("Spoken outut saved in " + output_file)
 
     # Print the response
     print(response_text)
