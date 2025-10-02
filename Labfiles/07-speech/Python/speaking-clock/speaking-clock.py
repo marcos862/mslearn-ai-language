@@ -84,7 +84,7 @@ def TellTime():
         </voice>
     </speak>
     """.format(response_text)
-    speak = speech_syntesizer.speak_ssml_async(responseSsml).get()
+    speak = speech_synthesizer.speak_ssml_async(responseSsml).get()
     if speak.reason != speech_sdk.ResultReason.SynthesizingAudioCompleted:
         print(speak.reason)
     else:
