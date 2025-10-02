@@ -79,7 +79,7 @@ def main():
 
 
     except Exception:
-        print(format_exc)
+        print(format_exc())
 
 
 if __name__ == '__main__': 
