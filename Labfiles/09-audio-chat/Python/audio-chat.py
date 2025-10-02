@@ -30,7 +30,7 @@ def main():
         )
 
         # Get a chat client
-        openai_client = project_client.get_openai_cient(api_version="2024-10-21")
+        openai_client = project_client.get_openai_client(api_version="2024-10-21")
 
         # Initialize prompts
         system_message = "You are an AI assistant for a produce supplier company."
