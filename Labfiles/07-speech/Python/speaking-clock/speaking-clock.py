@@ -79,7 +79,7 @@ def TellTime():
     <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-Us'>
         <voice name='en-GB-LibbyNeural'>
             {}
-            >break strength='weak' />
+            <break strength='weak' />
             Time to end this lab!
         </voice>
     </speak>
